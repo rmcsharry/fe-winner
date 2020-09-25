@@ -1,0 +1,38 @@
+<form novalidate>
+  <div class="fields">
+    <div class="card card-front">
+      <div class="card-body">
+        <div class="field" id="stripe-card-number" class="field empty"></div>
+        <div class="card-details">
+          <input
+            *transloco="let translate"
+            id="stripe-card-holder-name"
+            [(ngModel)]="cardHolder"
+            name="name"
+            [value]="cardHolder"
+            [placeholder]="translate('payment.cardHolder')"
+          />
+          <div class="field" id="stripe-card-expiry" class="field empty"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card card-back">
+      <div class="card-top-bar"></div>
+      <div class="card-body">
+        <div class="field" id="stripe-card-cvc" class="field empty"></div>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- NOTE: Stripe returns error messsages already translated for us :) -->
+<div class="card-errors">
+  <div>
+    {{ (numberValidation$ | async)?.errorMessage }}
+  </div>
+  <div>
+    {{ (expiryValidation$ | async)?.errorMessage }}
+  </div>
+  <div>
+    {{ (cvcValidation$ | async)?.errorMessage }}
+  </div>
+</div>

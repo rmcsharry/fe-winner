@@ -1,0 +1,33 @@
+@import '../../../../theme/palette';
+
+.basket-container {
+  .deleted {
+    height: 20px;
+    margin-bottom: 20px;
+    .message {
+      margin-top: -5px;
+      animation: fadeOut 2s forwards;
+      animation-delay: 2s;
+      :first-child {
+        color: $winnr-theme-primary-color;
+      }
+    }
+  }
+  .item {
+    margin-bottom: 10px;
+  }
+  wn-basket-empty {
+    margin-top: 40px;
+  }
+}
+.spinner-container {
+  height: 140px;
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

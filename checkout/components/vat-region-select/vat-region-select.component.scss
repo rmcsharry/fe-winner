@@ -1,0 +1,23 @@
+@import '../../../../theme/palette';
+
+.select-box {
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 100%;
+  border: 1px solid $winnr-theme-light-gray;
+  height: 36px;
+  padding: 5px;
+  color: $winnr-theme-font-color;
+  .region {
+    line-height: 2;
+  }
+  img {
+    width: 30px;
+    vertical-align: bottom;
+    margin-right: 5px;
+  }
+  .select-placeholder {
+    font-size: 14px;
+    color: $winnr-theme-light-gray;
+  }
+}

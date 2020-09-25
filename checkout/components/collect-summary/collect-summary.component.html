@@ -1,0 +1,23 @@
+<ng-container *transloco="let translate; read: 'checkoutCollectSummary'">
+  <div fxHide.xs class="collect-summary-container">
+    <div fxFlex="100" fxLayout="column" fxLayoutAlign="space-between">
+      <wn-section-title
+        scopeKey="checkoutCollectSummary"
+        [translationInfo]="getTranslationInfo()"
+        [isMultiPart]="true"
+      ></wn-section-title>
+      <div>
+        <p>{{ translate('body.part1') }}</p>
+        <p>{{ translate('body.part2') }}</p>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="space-between">
+        <button mat-flat-button color="primary" routerLink="/earn-tickets">
+          {{ translate('buttonText.earnTickets') }}
+        </button>
+        <button mat-stroked-button color="primary" routerLink="/referral">
+          {{ translate('buttonText.inviteFriends') }}
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,13 @@
+<div class="header" fxLayoutAlign="space-between">
+  <div>
+    <div fxFlex="24px">
+      <img src="../../../assets/images/icons/cart.svg" alt="cart" />
+    </div>
+    <wn-section-title scopeKey="checkoutBasket" [isUppercase]="true"></wn-section-title>
+  </div>
+  <mat-icon>close</mat-icon>
+</div>
+<div class="mobile-container" fxLayout="column">
+  <wn-basket [isBasketEmpty$]="isBasketEmpty$" [basketItems$]="basketItems$"></wn-basket>
+</div>
+<wn-basket-summary *ngIf="!(isBasketEmpty$ | async)" [basketItems$]="basketItems$"></wn-basket-summary>

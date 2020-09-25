@@ -1,0 +1,9 @@
+@import '../../../../theme/palette';
+
+.header {
+  margin-bottom: 60px;
+  background-color: $winnr-theme-light-black;
+  .page-sizer {
+    padding: 0 16px;
+  }
+}

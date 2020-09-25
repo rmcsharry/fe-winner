@@ -1,0 +1,31 @@
+<div fxLayout="column" class="dialog" *transloco="let translate; read: 'discount'">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="header">
+    <wn-section-title [scopeKey]="'discount'"></wn-section-title>
+    <mat-icon class="close-icon" (click)="close()">close</mat-icon>
+  </div>
+  <mat-divider></mat-divider>
+  <div mat-dialog-content fxFlex fxLayout="column">
+    <form [formGroup]="discountForm" (ngSubmit)="onSubmit()" class="row">
+      <p>{{ translate('text') }}</p>
+      <mat-form-field appearance="outline" class="custom-field-input">
+        <input type="text" matInput [placeholder]="translate('placeholder')" formControlName="discountCode" />
+        <mat-error>
+          <wn-form-errors
+            [control]="discountForm.controls.discountCode"
+            [displayName]="translate('discountCode')"
+          ></wn-form-errors>
+        </mat-error>
+      </mat-form-field>
+      <button
+        type="submit"
+        mat-flat-button
+        color="primary"
+        class="button"
+        [class.spinner]="isSubmitDisabled"
+        [disabled]="isSubmitDisabled || discountForm.invalid"
+      >
+        {{ translate('apply') }}
+      </button>
+    </form>
+  </div>
+</div>

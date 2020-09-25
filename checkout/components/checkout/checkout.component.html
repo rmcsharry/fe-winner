@@ -1,0 +1,15 @@
+<!-- NOTE -->
+<!-- Since the wizard uses router-outlet and child-routes, when changing steps we -->
+<!-- are also changing routes, so the wn-wizard MUST be declared at this level -->
+<!-- If you were to put a wizard in mobile and a wizard in desktop, you would have 2 wizards bound to the same routes -->
+<!-- and will likely get unexpected behaviour when navigating -->
+<!-- By using ngIf here, we only get EITHER desktop OR mobile loaded in the DOM -->
+<!-- which is preferable to using fxHide (which does not remove the unused component from the DOM) -->
+
+<div class="container">
+  <wn-checkout-desktop *ngIf="!isMobile"></wn-checkout-desktop>
+  <wn-checkout-mobile *ngIf="isMobile" [selectedStep]="selectedStep"></wn-checkout-mobile>
+  <div [ngClass]="isMobile ? '' : 'page-sizer'">
+    <wn-wizard translateKey="checkout" [isShowHeader]="!isMobile"></wn-wizard>
+  </div>
+</div>

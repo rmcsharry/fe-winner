@@ -1,0 +1,13 @@
+@import '../../../../theme/palette';
+@import '../../../../theme/media-queries';
+
+.container {
+  height: calc(100vh - 60px);
+  @include fx-gt-xs {
+    height: 100vh;
+  }
+  background-color: $winnr-theme-black;
+  .page-sizer {
+    padding: 0 16px;
+  }
+}

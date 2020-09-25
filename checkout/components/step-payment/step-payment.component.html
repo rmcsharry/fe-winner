@@ -1,0 +1,33 @@
+<ng-container *transloco="let translate; read: 'checkoutPayment'">
+  <div class="payment-step-content" fxLayout="row" fxLayoutGap="60px" fxLayoutAlign="space-between">
+    <div fxFlex="auto">
+      <div class="credit-card-panel" fxLayout="column">
+        <wn-panel-radio-button
+          [title]="translate('card.title')"
+          [subtitle]="translate('card.subtitle')"
+          groupName="payment-type"
+          imgName="cards"
+          [isChecked]="isCardChecked"
+          (click)="onCardClick()"
+        ></wn-panel-radio-button>
+        <div class="credit-card-panel-body" [ngClass]="{collapse: isPaypalChecked, expand: isCardChecked}">
+          <mat-divider></mat-divider>
+          <wn-credit-card></wn-credit-card>
+        </div>
+      </div>
+      <div>
+        <wn-panel-radio-button
+          [title]="translate('paypal.title')"
+          [subtitle]="translate('paypal.subtitle')"
+          groupName="payment-type"
+          imgName="paypal"
+          [isChecked]="isPaypalChecked"
+          (click)="onPaypalClick()"
+        ></wn-panel-radio-button>
+      </div>
+    </div>
+    <div fxFlex="30">
+      <wn-order-summary></wn-order-summary>
+    </div>
+  </div>
+</ng-container>

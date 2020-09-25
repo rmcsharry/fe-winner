@@ -1,0 +1,24 @@
+<ng-container *transloco="let translate; read: 'checkoutBasketSummary'">
+  <div fxHide.xs class="basket-summary-container">
+    <div fxFlex="100" fxLayout="column" fxLayoutAlign="space-between">
+      <wn-section-title scopeKey="checkoutBasketSummary"></wn-section-title>
+      <div class="totals">
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <span>{{ translate('quantity') }}</span>
+          <span>{{ totalQuantity }}</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="price" fxLayout="row" fxLayoutAlign="space-between">
+          <span>{{ translate('total') }}</span>
+          <wn-price size="large" [beforePrice]="totalRecommendedPrice" [afterPrice]="totalBasketPrice"></wn-price>
+        </div>
+        <wn-checkout-button></wn-checkout-button>
+      </div>
+    </div>
+  </div>
+  <div fxHide.gt-xs class="mobile-bottom-bar" fxFlex="100" fxLayoutAlign="space-between center">
+    <span>{{ translate('total') }}</span>
+    <wn-price size="large" [beforePrice]="totalRecommendedPrice" [afterPrice]="totalBasketPrice"></wn-price>
+    <wn-checkout-button size="large"></wn-checkout-button>
+  </div>
+</ng-container>

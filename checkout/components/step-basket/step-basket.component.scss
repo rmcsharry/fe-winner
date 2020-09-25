@@ -1,0 +1,14 @@
+.basket-step-content {
+  margin-top: 40px;
+}
+.mobile-container {
+  margin-top: 70px;
+  height: calc(100% - 76px);
+  overflow: auto;
+  wn-basket-summary {
+    position: absolute;
+    display: fixed;
+    bottom: 0;
+    margin-left: -24px; // because of the mat-horizontal-stepper-content padding!
+  }
+}

@@ -1,0 +1,32 @@
+@import '../../../../theme/palette';
+
+.payment-step-content {
+  > div:first-of-type {
+    margin-top: 60px;
+  }
+  > div:last-of-type {
+    margin-top: 20px;
+  }
+  .credit-card-panel {
+    background-color: $winnr-theme-light-black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    .credit-card-panel-body {
+      max-height: 340px;
+    }
+    .expand {
+      -webkit-transition: max-height 0.1s ease;
+      -moz-transition: max-height 0.1s ease;
+      -o-transition: max-height 0.1s ease;
+      transition: max-height 0.1s ease;
+    }
+    .collapse {
+      -webkit-transition: max-height 0.3s ease;
+      -moz-transition: max-height 0.3s ease;
+      -o-transition: max-height 0.3s ease;
+      transition: max-height 0.3s ease;
+      overflow: hidden;
+      max-height: 0;
+    }
+  }
+}

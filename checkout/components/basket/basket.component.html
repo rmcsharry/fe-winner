@@ -1,0 +1,30 @@
+<ng-container *transloco="let translate; read: 'checkoutBasket'">
+  <div class="basket-container" fxLayout="column" fxLayoutAlign="stretch stretch">
+    <div class="deleted">
+      <div class="message" *ngIf="deletedItem">
+        <span>{{ deletedItem[translateService.getActiveLang()] }}</span>
+        <span> ... {{ translate('deleted') }}</span>
+      </div>
+    </div>
+    <ng-container *ngIf="basketItems$ | async; else spinner">
+      <ng-container *ngIf="isBasketEmpty$ | async; else notEmpty">
+        <wn-basket-empty></wn-basket-empty>
+      </ng-container>
+      <ng-template #notEmpty>
+        <div class="item" *ngFor="let item of basketItems$ | async; trackBy: trackByFn">
+          <wn-basket-item
+            (itemDeleted)="handleItemDeleted($event)"
+            [basketItem]="item"
+            isEditable="true"
+            isDeletable="true"
+          ></wn-basket-item>
+        </div>
+      </ng-template>
+    </ng-container>
+  </div>
+  <ng-template #spinner>
+    <div class="spinner-container" fxLayoutAlign="center center">
+      <mat-spinner diameter="36" strokeWidth="3"></mat-spinner>
+    </div>
+  </ng-template>
+</ng-container>

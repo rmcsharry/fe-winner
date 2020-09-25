@@ -1,0 +1,16 @@
+<div class="select-box" *transloco="let translate; read: 'vatRegion'" (click)="openVatRegionDialog()">
+  <ng-container *ngIf="selectedVatRegion">
+    <div fxFlex="100%" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="select-placeholder">
+        {{ translate('selectTaxLocation') }}
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center">
+        <img [src]="selectedVatRegion.flagUrl" alt="country flag" />
+        <span class="region">
+          {{ selectedVatRegion.name[translateService.getActiveLang()] }}: {{ selectedVatRegion.rate }}&#37;
+        </span>
+        <mat-icon matSuffix>arrow_drop_down</mat-icon>
+      </div>
+    </div>
+  </ng-container>
+</div>

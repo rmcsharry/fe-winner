@@ -1,0 +1,14 @@
+<ng-container *transloco="let translate; read: 'checkoutBasket'">
+  <div fxFlex="0 1 80" fxLayout="column" fxLayoutAlign="center center">
+    <img class="empty-basket" src="../../../assets/images/icons/basket.svg" alt="empty basket" />
+    <h3>{{ translate('empty') }}</h3>
+    <button mat-flat-button color="primary" (click)="onStartShopping()">
+      {{ translate('shopping') }}
+    </button>
+  </div>
+</ng-container>
+<ng-container *ngIf="!userService.authStateLoggedIn">
+  <div fxHide.gt-xs class="mobile-bottom-bar" fxFlex="100" fxLayoutAlign="center center">
+    <wn-login-buttons></wn-login-buttons>
+  </div>
+</ng-container>

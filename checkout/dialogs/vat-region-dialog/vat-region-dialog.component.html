@@ -1,0 +1,84 @@
+<div
+  fxLayout="column"
+  class="dialog"
+  *transloco="let translate; read: 'vatRegion'"
+  [class.spinner]="!isSubmitting && isLoading"
+>
+  <div class="header" fxLayout="row" fxLayoutAlign.gt-xs="space-between center" *ngIf="data.selectedVatRegion">
+    <div class="titles">
+      <wn-section-title
+        scopeKey="vatRegion"
+        [isMultiPart]="true"
+        [translationInfo]="getTranslationInfo()"
+      ></wn-section-title>
+    </div>
+    <mat-icon class="close-icon" (click)="close()">close</mat-icon>
+  </div>
+  <mat-divider></mat-divider>
+  <div mat-dialog-content fxLayout="column" fxLayoutAlign="start" *ngIf="data.vatRegions.length > 0">
+    <div fxLayoutAlign="center">
+      <mat-radio-button
+        name="vatRegions"
+        aria-label="Select a region"
+        [value]="data.vatRegions[0].countryCode"
+        [checked]="data.vatRegions[0].countryCode === data.selectedVatRegion.countryCode"
+        (change)="onRegionChanged($event)"
+      >
+        <div class="region-option-container">
+          <div class="region-option" fxLayoutAlign="space-between">
+            <div>
+              <span>
+                <img [src]="data.vatRegions[0].flagUrl" alt="" />
+              </span>
+              <span class="region-name">
+                {{ data.vatRegions[0].name[translateService.getActiveLang()] }}
+              </span>
+            </div>
+            <span> {{ data.vatRegions[0].rate }}&#37; </span>
+          </div>
+        </div>
+      </mat-radio-button>
+    </div>
+    <mat-radio-group
+      class="regions"
+      name="vatRegions"
+      aria-label="Select a region"
+      fxLayout="column wrap"
+      fxLayoutAlign="space-between space-around"
+    >
+      <div *ngFor="let vatRegion of data.vatRegions | slice: 1">
+        <mat-radio-button
+          [value]="vatRegion.countryCode"
+          [checked]="vatRegion.countryCode === data.selectedVatRegion.countryCode"
+          (change)="onRegionChanged($event)"
+        >
+          <div class="region-option-container">
+            <div class="region-option" fxLayoutAlign="space-between">
+              <div>
+                <span>
+                  <img [src]="vatRegion.flagUrl" alt="" />
+                </span>
+                <span class="region-name">
+                  {{ vatRegion.name[translateService.getActiveLang()] }}
+                </span>
+              </div>
+              <span> {{ vatRegion.rate }}&#37; </span>
+            </div>
+          </div>
+        </mat-radio-button>
+      </div>
+    </mat-radio-group>
+    <button
+      type="button"
+      mat-flat-button
+      color="primary"
+      class="button"
+      *ngIf="data.vatRegions.length > 0"
+      [disabled]="isSubmitting"
+      (click)="applyChangedRegion()"
+      [class.spinner]="isSubmitting"
+    >
+      {{ translate('apply') }}
+    </button>
+  </div>
+</div>

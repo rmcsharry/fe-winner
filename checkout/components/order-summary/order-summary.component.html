@@ -1,0 +1,79 @@
+<ng-container *transloco="let translate; read: 'checkoutOrderSummary'">
+  <div class="region-select-container">
+    <wn-vat-region-select
+      *ngIf="order$ | async as order"
+      [selectedVatRegion]="order.orderVat.vatRegion"
+      [orderNumber]="order.orderNumber"
+    ></wn-vat-region-select>
+  </div>
+  <div class="order-summary-container">
+    <div fxFlex="100" fxLayout="column" fxLayoutAlign="start">
+      <wn-section-title scopeKey="checkoutOrderSummary"></wn-section-title>
+      <div class="prices" fxLayout="column" fxLayoutAlign="space-evenly" *ngIf="order$ | async as order; else spinner">
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <span>{{ translate('subTotal') }}</span>
+          <span [ngClass]="order.discount ? 'cross-out' : ''">
+            {{ order.priceBasketTotal / 100 | currency: 'EUR' }}
+          </span>
+        </div>
+        <ng-container *ngIf="order.discount">
+          <div class="discount-line" fxLayout="row" fxLayoutAlign="end">
+            <span>{{ order.priceAfterDiscount / 100 | currency: 'EUR' }}</span>
+          </div>
+        </ng-container>
+        <mat-divider></mat-divider>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <div>
+            <span>{{ order.orderVat.name[translateService.getActiveLang()] }}</span>
+            <span *ngIf="order.orderVat.name[translateService.getActiveLang()]">
+              &nbsp;({{ order.orderVat.vatRegion.rate }}%) -&nbsp;{{
+                order.orderVat.vatRegion.name[translateService.getActiveLang()]
+              }}
+            </span>
+          </div>
+          <span>
+            {{ (order.priceIncludingTax - order.priceAfterDiscount) / 100 | currency: 'EUR' }}
+          </span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <span>{{ order.paymentProcessor.name[translateService.getActiveLang()] }}</span>
+          <span>
+            {{ (order.priceTotal - order.priceIncludingTax) / 100 | currency: 'EUR' }}
+          </span>
+        </div>
+        <mat-divider></mat-divider>
+        <ng-container *ngIf="!order.discount">
+          <a href="javascript:void(0)" (click)="openDiscountDialog()">
+            <span [innerHTML]="'checkoutOrderSummary.gotCode' | transloco"></span>
+          </a>
+        </ng-container>
+        <div class="total-line" fxLayout="row" fxLayoutAlign="space-between">
+          <span>{{ translate('total') }}</span>
+          <span>{{ order.priceTotal / 100 | currency: 'EUR' }}</span>
+        </div>
+        <ng-container *ngIf="order.discount">
+          <span class="discount-line">
+            {{ order.discount.name[translateService.getActiveLang()] }} {{ translate('discountApplied') }}
+          </span>
+        </ng-container>
+        <button
+          type="submit"
+          mat-flat-button
+          color="primary"
+          class="checkout-button"
+          [disabled]="!(isCardCompleted$ | async) || (isProcessingPayment$ | async)"
+          [class.spinner]="isProcessingPayment$ | async"
+          (click)="onBuyClick()"
+        >
+          {{ translate('buttonText') }}
+        </button>
+        <wn-terms-notice size="small"></wn-terms-notice>
+      </div>
+    </div>
+    <ng-template #spinner>
+      <div class="spinner-container" fxLayoutAlign="center center">
+        <mat-spinner diameter="36" strokeWidth="3"></mat-spinner>
+      </div>
+    </ng-template>
+  </div>
+</ng-container>

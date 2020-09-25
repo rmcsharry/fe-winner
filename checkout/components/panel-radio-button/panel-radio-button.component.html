@@ -1,0 +1,11 @@
+<div class="radio-panel" (click)="radio.checked = true">
+  <mat-radio-button [name]="groupName" #radio [checked]="isChecked">
+    <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between">
+      <h3>{{ title }}</h3>
+      <img [src]="'./assets/images/checkout/' + imgName + '.svg'" [alt]="imgName + ' payment logo'" />
+    </div>
+  </mat-radio-button>
+  <div class="payment-subtitle">
+    {{ subtitle }}
+  </div>
+</div>

@@ -1,0 +1,40 @@
+@import '../../../../theme/palette';
+
+.region-select-container {
+  height: 36px;
+  margin-bottom: 14px;
+}
+.order-summary-container {
+  height: 380px;
+  padding: 16px;
+  background-color: $winnr-theme-light-black;
+  align-content: center;
+  .prices {
+    height: 100%;
+    font-size: 14px;
+    color: $winnr-theme-light-gray;
+    .cross-out {
+      text-decoration: line-through;
+    }
+    .discount-line {
+      padding-top: 5px;
+      color: $winnr-theme-primary-color;
+    }
+    .total-line {
+      padding-top: 20px;
+      font-size: 20px;
+      color: $winnr-theme-font-color;
+    }
+    wn-terms-notice {
+      margin-top: 10px;
+    }
+  }
+  .checkout-button {
+    width: 100%;
+    margin: 0;
+    margin-top: 20px;
+  }
+  .spinner-container {
+    margin-top: 100px;
+  }
+}

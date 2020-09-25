@@ -1,0 +1,39 @@
+@import '../../../../theme/palette';
+
+.basket-summary-container {
+  height: 260px;
+  width: 100%;
+  padding: 16px;
+  margin-top: 40px;
+  background-color: $winnr-theme-light-black;
+  .totals {
+    font-size: 14px;
+    color: $winnr-theme-light-gray;
+    div {
+      margin-bottom: 5px;
+    }
+    .price {
+      margin-top: 12px;
+      margin-bottom: 20px;
+    }
+  }
+}
+.mobile-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  height: 75px;
+  background: $winnr-theme-light-black;
+  box-shadow: -1px -6px 10px 2px $winnr-theme-black-shadow;
+  width: 100%;
+  padding: 0 30px;
+  align-items: flex-end;
+  span {
+    color: $winnr-theme-light-gray;
+  }
+  .checkout-button {
+    margin: 0;
+    width: 143px;
+    height: 44px;
+  }
+}

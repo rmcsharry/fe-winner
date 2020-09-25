@@ -1,0 +1,14 @@
+<div fxHide.xs class="basket-step-content" fxLayout="row" fxLayoutGap="60px" fxLayoutAlign="space-between">
+  <div fxFlex="auto">
+    <wn-basket [isBasketEmpty$]="isBasketEmpty$" [basketItems$]="basketItems$"></wn-basket>
+  </div>
+  <div *ngIf="!(isBasketEmpty$ | async)" fxFlex="30">
+    <wn-basket-summary [isBasketEmpty$]="isBasketEmpty$" [basketItems$]="basketItems$"></wn-basket-summary>
+  </div>
+</div>
+<div fxHide.gt-xs class="mobile-container">
+  <div fxLayout="column">
+    <wn-basket [isBasketEmpty$]="isBasketEmpty$" [basketItems$]="basketItems$"></wn-basket>
+  </div>
+  <wn-basket-summary *ngIf="!(isBasketEmpty$ | async)" [basketItems$]="basketItems$"></wn-basket-summary>
+</div>

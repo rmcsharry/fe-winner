@@ -1,0 +1,62 @@
+@import '../../../../theme/palette';
+@import '../../../../theme/font';
+@import '../../../../theme/media-queries';
+
+.header {
+  padding: 20px;
+  .titles {
+    flex-direction: column;
+    @include fx-gt-xs {
+      flex-direction: row;
+      :last-child {
+        margin-left: 20px;
+      }
+    }
+  }
+}
+.button {
+  width: 240px;
+  height: 44px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.regions {
+  max-height: unset;
+  @include fx-gt-xs {
+    max-height: 70%;
+  }
+  @include fx-gt-sm {
+    max-height: 80%;
+  }
+  @include fx-gt-md {
+    max-height: 70%;
+  }
+}
+.region-option-container {
+  padding: 10px 20px;
+  font-size: 14px;
+  @include fx-gt-sm {
+    padding: 16px 20px;
+    font-size: 16px;
+  }
+  @include fx-gt-md {
+    padding: 22px 20px;
+    font-size: 16px;
+  }
+  .region-option {
+    width: 170px;
+  }
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    margin-left: 2px;
+    margin-right: 3px;
+  }
+  .region-name {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 5px;
+    width: 100%;
+  }
+}

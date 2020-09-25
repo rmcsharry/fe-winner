@@ -1,0 +1,16 @@
+@import '../../../../theme/palette';
+
+.empty-basket {
+  height: 80px;
+  width: 80px;
+}
+.mobile-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  height: 75px;
+  background: $winnr-theme-dark-black;
+  box-shadow: -1px -6px 10px 2px $winnr-theme-black-shadow;
+  width: 100%;
+  padding: 0 30px;
+}

@@ -1,0 +1,21 @@
+@import '../../../../theme/palette';
+
+.header {
+  position: fixed;
+  height: 60px;
+  width: 100%;
+  padding: 16px;
+  background-color: $winnr-theme-dark-black;
+  wn-section-title {
+    margin-top: -2px;
+    margin-left: 12px;
+  }
+}
+.mobile-container {
+  margin-top: 60px;
+  height: calc(100% - 76px);
+  overflow: auto;
+  wn-basket {
+    padding: 30px;
+  }
+}
